@@ -1,6 +1,10 @@
-const puppeteer = require("puppeteer");
+const { exec } = require("child_process");
 
-puppeteer
-  .install()
-  .then(() => console.log("✅ Puppeteer installed successfully!"))
-  .catch((err) => console.error("❌ Puppeteer installation failed:", err));
+exec("npx puppeteer browsers install chrome", (err, stdout, stderr) => {
+  if (err) {
+    console.error(`Errore durante l'installazione di Chrome: ${err}`);
+    return;
+  }
+  console.log(`Installazione Chrome completata: ${stdout}`);
+  if (stderr) console.error(`Warning: ${stderr}`);
+});
