@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
-    "postinstall": "node install-chrome.js",
+    "postinstall": "apt-get update && apt-get install -y wget unzip && wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && apt install -y ./google-chrome-stable_current_amd64.deb",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
