@@ -10,8 +10,13 @@ const PORT = process.env.PORT || 3000;
 app.get('/api/elo-data', async (req, res) => {
   try {
     const browser = await puppeteer.launch({ 
-      headless: "new",
-      args: ['--no-sandbox', '--disable-setuid-sandbox'],
+      headless: true,
+      args: ['--no-sandbox',
+        '--disable-setuid-sandbox',
+        "--disable-dev-shm-usage",
+        "--disable-gpu",
+        "--single-process"
+      ],
     });
     const page = await browser.newPage();
     await page.goto('https://tennisabstract.com/reports/atp_elo_ratings.html', { waitUntil: 'networkidle2' });
