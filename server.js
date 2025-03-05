@@ -10,8 +10,8 @@ const PORT = process.env.PORT || 3000;
 app.get('/api/elo-data', async (req, res) => {
   try {
     const browser = await puppeteer.launch({ 
-      executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || '/usr/bin/google-chrome-stable',
       headless: 'new',
+      executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || puppeteer.executablePath(),
       args: ['--no-sandbox',
         '--disable-setuid-sandbox',
         "--disable-dev-shm-usage",
